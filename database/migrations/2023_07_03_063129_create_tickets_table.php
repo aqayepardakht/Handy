@@ -21,7 +21,6 @@ return new class extends Migration
             $table->enum('status' , ['waiting' , 'pending' , 'answered' , 'closed' , 'customerResponse']);
             $table->enum('satisfaction' , ['happy' , 'unhappy'])->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
             $table->ipAddress('ip')->nullable();
             $table->string('opts');
             $table->timestamps();

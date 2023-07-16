@@ -1,6 +1,6 @@
 <?php
 
-namespace Aqayepardakht\Handy\Ticket\Services;
+namespace Aqayepardakht\Handy\Ticket;
 
 use DB;
 use Aqayepardakht\Handy\Ticket\Models\Ticket;

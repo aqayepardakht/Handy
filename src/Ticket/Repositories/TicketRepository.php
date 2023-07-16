@@ -1,6 +1,6 @@
 <?php
 
-namespace Aqayepardakht\Handy\Ticket\Services;
+namespace Aqayepardakht\Handy\Ticket\Repositories;
 
 use Aqayepardakht\Handy\Ticket\Models\Ticket;
 use Aqayepardakht\Handy\Ticket\Models\TicketMessage;
