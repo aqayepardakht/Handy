@@ -35,7 +35,8 @@
     "extra": {
         "laravel": {
           "providers": [
-            "Aqayepardakht\\Handy\\AqayepardakhtServiceProvider"
+            "Aqayepardakht\\Handy\\AqayepardakhtServiceProvider",
+            "Aqayepardakht\\Handy\\TicketServiceProvider"
           ]
         }
     }
