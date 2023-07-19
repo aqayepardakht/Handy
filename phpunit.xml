@@ -10,12 +10,7 @@
     </testsuite>
   </testsuites>
   <php>
-    <env name="APP_ENV" value="testing"/>
-    <env name="DB_HOST" value="mysql"/>
-    <env name="DB_PORT" value="3306"/>
-    <env name="DB_DATABASE" value="example_app"/>
-    <env name="DB_USERNAME" value="sail"/>
-    <env name="DB_PASSWORD" value="password"/>
+    <env name="DB_CONNECTION" value="testing"/>
     <env name="APP_KEY" value="base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKZvp6fiiM10="/>
   </php>
   <source>

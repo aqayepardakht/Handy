@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
+use Aqayepardakht\Handy\Tests\TestCase;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Aqayepardakht\Ticket\Models\Ticket;

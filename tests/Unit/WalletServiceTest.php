@@ -2,8 +2,6 @@
 
 namespace Aqayepardakht\Handy\Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
 use Aqayepardakht\Handy\Wallet\Models\{
     Wallet, 
     Invoice,
@@ -15,13 +13,13 @@ use Aqayepardakht\Handy\Wallet\Repositories\{
     WalletRepository
 };
 use Aqayepardakht\Handy\Wallet\WalletService;
-use Aqayepardakht\Handy\Tests\TestCasee;
+use Aqayepardakht\Handy\Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Aqayepardakht\Handy\Wallet\Requests\WalletRequest;
 use Aqayepardakht\PhpSdk\Api;
 use Aqayepardakht\PhpSdk\Invoice as PayableInvoice;
 
-class WalletServiceTest extends TestCasee
+class WalletServiceTest extends TestCase
 {
     private $invoiceRepository;
     private $walletRepository;
