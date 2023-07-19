@@ -2,12 +2,12 @@
 
 namespace Aqayepardakht\Handy\Tests\Unit;
 
-use Aqayepardakht\Handy\Tests\TestCasee;
+use Aqayepardakht\Handy\Tests\TestCase;
 use Aqayepardakht\Handy\Wallet\Models\Wallet;
 use stdClass;
 use Aqayepardakht\Handy\Wallet\Traits\HasWallets;
 
-class HasWalletsTest extends TestCasee
+class HasWalletsTest extends TestCase
 {
     use HasWallets;
 

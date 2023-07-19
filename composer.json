@@ -7,7 +7,7 @@
         }
     ],
     "type": "library",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
@@ -35,7 +35,8 @@
     "extra": {
         "laravel": {
           "providers": [
-            "Aqayepardakht\\Handy\\AqayepardakhtServiceProvider"
+            "Aqayepardakht\\Handy\\AqayepardakhtServiceProvider",
+            "Aqayepardakht\\Handy\\TicketServiceProvider"
           ]
         }
     }
