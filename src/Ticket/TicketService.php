@@ -3,15 +3,15 @@
 namespace Aqayepardakht\Handy\Ticket;
 
 use DB;
-use Aqayepardakht\Handy\Ticket\Models\Ticket;
-use Aqayepardakht\Handy\Ticket\Models\TicketMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Aqayepardakht\Handy\Ticket\Models\Ticket;
 use Illuminate\Validation\ValidationException;
-use Aqayepardakht\Handy\Ticket\Services\TicketRepository;
+use Aqayepardakht\Handy\Ticket\Models\TicketMessage;
+use Aqayepardakht\Handy\Ticket\Repositories\TicketRepository;
 use Aqayepardakht\Handy\Ticket\Exceptions\TicketClosedException;
 use Aqayepardakht\Handy\Ticket\Exceptions\TicketNotFoundException;
 use Aqayepardakht\Handy\Ticket\Exceptions\TicketFaildValidationException;
@@ -25,13 +25,13 @@ class TicketService {
     
     protected function validateStoreData(Request $request) {
 
-        $rules = config('validateticketdata.ticket.store');
+        $rules = config('Handy.ticket.store');
         return $this->validateData($request, $rules);
     }
 
     protected function validateMessageData(Request $request) {
 
-        $rules = config('validateticketdata.ticket.message');
+        $rules = config('Handy.ticket.message');
         return $this->validateData($request, $rules);
     }
 
@@ -56,14 +56,14 @@ class TicketService {
     
     protected function prepareTicketData() {
 
-        $configFields = config('validateticketdata.ticket_fields');
+        $configFields = config('Handy.ticket_fields');
         $fields = array_keys($configFields);
         return $this->prepareData($fields);
     }
 
     protected function prepareMessageData() {
 
-        $configFields = config('validateticketdata.ticket_mesage_fields');
+        $configFields = config('Handy.ticket_mesage_fields');
         $fields = array_keys($configFields);
         $messageData = $this->prepareData($fields);
 
