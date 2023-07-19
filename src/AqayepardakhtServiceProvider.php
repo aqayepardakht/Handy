@@ -23,6 +23,7 @@ class AqayepardakhtServiceProvider extends ServiceProvider
         $this->publishes([$configPath => config_path('Handy.php')]);
 
         $this->mergeConfigFrom($configPath, 'Handy');
+
     }
 
     private function handleMigrations(): void
