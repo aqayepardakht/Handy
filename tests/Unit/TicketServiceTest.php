@@ -17,8 +17,6 @@ use Aqayepardakht\Ticket\Exceptions\TicketFaildValidationException;
 
 class TicketServiceTest extends TestCase
 {
-    //use RefreshDatabase;
-
     protected $ticketService;
     protected $ticketRepository;
 
