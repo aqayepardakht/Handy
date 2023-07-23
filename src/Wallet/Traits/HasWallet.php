@@ -23,9 +23,10 @@ trait HasWallet {
     }
 
     public function createWallet($name = null) {
-        $wallet          = new Wallet();
-        $wallet->balance = 0;
-        $wallet->name    = $name;
+        $wallet            = new Wallet();
+        $wallet->balance   = 0;
+        $wallet->name      = $name;
+        $wallet->holder_id = get_class($this);
 
         $this->wallet()->save($wallet);
 
