@@ -71,10 +71,10 @@ class WalletService
         }
 
         $api = new Api([
-            'pin' => config('Handy.pay.pin') ? config('Handy.pay.pin') : 'sandbox',
+            'pin' => config('Handy.pay.pin'),
         ]);
 
-
+        
         $result = $api->gateway()->invoice(
             new PayableInvoice([
                 'amount'  => $invoice->amount,

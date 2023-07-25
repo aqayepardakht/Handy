@@ -15,10 +15,6 @@ return [
         'geocode' => false,
     ],
 
-    'pay' => [
-        'pin' => '',
-    ],
-
     //
     'ticket' => [
         'store' => [
