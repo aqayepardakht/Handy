@@ -71,7 +71,7 @@ class WalletService
         }
 
         $api = new Api([
-            'pin' => config('Handy.pay.pin'),
+            'pin' => config('Handy.pay.pin') ? config('Handy.pay.pin') : 'sandbox',
         ]);
 
 
