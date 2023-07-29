@@ -15,8 +15,7 @@ return [
         'geocode' => false,
     ],
 
-    //
-    'ticket' => [
+    'ticket' => [ 
         'store' => [
             'title'         => 'required|string',
             'department'    => 'required|in:financial,general,technical',
@@ -29,11 +28,9 @@ return [
             'ip'            => 'nullable|ip',
             'user_id'       => 'nullable|exists:users,id',
             'text'          => 'nullable|string',
-            'file'          => 'nullable',
+            'file'          => 'nullable|mimes:jpeg,jpg,png,gif,txt,pdf,doc|max:2048',
             'parent_id'     => 'nullable',
-        ],
-    ],
-
+        ],   
     /*
     |--------------------------------------------------------------------------
     | Ticket Fields
@@ -42,15 +39,13 @@ return [
     | This array defines the display labels for various ticket fields.
     | You can modify or add additional fields as needed.
     */
-
-    'ticket_fields' => [
-        'title'         => 'Title',
-        'department'    => 'Department',
-        'priority'      => 'Priority',
-        'ip'            => 'IP',
-    ],
-
-    /*
+        'fields' => [
+            'title'      => 'Title',
+            'department' => 'Department',
+            'priority'   => 'Priority',
+            'ip'         => 'IP',
+        ],
+      /*
     |--------------------------------------------------------------------------
     | Ticket Message Fields
     |--------------------------------------------------------------------------
@@ -58,10 +53,10 @@ return [
     | This array defines the display labels for various ticket message fields.
     | You can modify or add additional fields as needed.
     */
-
-    'ticket_mesage_fields' => [
-        'text'      => 'Text',
-        'parent_id' => 'Parent ID',
-        'file'      => 'File',
+        'message_fields' => [
+            'text'      => 'Text',
+            'parent_id' => 'Parent ID',
+            'file'      => 'File',
+        ],
     ],
 ];

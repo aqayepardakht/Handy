@@ -56,14 +56,14 @@ class TicketService {
     
     protected function prepareTicketData() {
 
-        $configFields = config('Handy.ticket_fields');
+        $configFields = config('Handy.ticket.fields');
         $fields = array_keys($configFields);
         return $this->prepareData($fields);
     }
 
     protected function prepareMessageData() {
 
-        $configFields = config('Handy.ticket_mesage_fields');
+        $configFields = config('Handy.ticket.message_fields');
         $fields = array_keys($configFields);
         $messageData = $this->prepareData($fields);
 
