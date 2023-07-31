@@ -74,7 +74,7 @@ class WalletService
             'pin' => config('Handy.pay.pin'),
         ]);
 
-
+        
         $result = $api->gateway()->invoice(
             new PayableInvoice([
                 'amount'  => $invoice->amount,
