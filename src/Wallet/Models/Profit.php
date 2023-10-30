@@ -31,7 +31,7 @@ class Profit extends Model
     {
         parent::__construct($attributes);
 
-        $this->table = config('Handy.wallet.table', 'Handy_profits');
+        $this->table = config('handy.profit.table', 'handy_profits');
         // $this->fillable = array_keys(config('Handy.wallet.rules'));
     }
 

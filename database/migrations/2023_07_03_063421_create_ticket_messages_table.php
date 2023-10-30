@@ -11,9 +11,20 @@ return new class extends Migration
      *
      * @return void
      */
+
+    protected $table;
+
+    /**
+     * Create a new migration instance.
+     */
+    public function __construct()
+    {
+        $this->table = config('handy.ticket.message.table', 'handy_tickets_messages');
+    }
+
     public function up()
     {
-        Schema::create('ticket_messages', function (Blueprint $table) {
+        Schema::create($this->table , function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('parent_id')->nullable();

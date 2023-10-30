@@ -11,6 +11,10 @@ class TicketMessage extends Model
 
     protected $guarded = ['id'];
 
+    public function users() {
+        return $this->belongsTo(User::class , 'user_id' , 'id');
+    }
+
     public function ticket() {
         return $this->belongsTo(Ticket::class);
     }

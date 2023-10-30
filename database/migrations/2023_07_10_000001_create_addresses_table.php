@@ -18,7 +18,7 @@ class CreateAddressesTable extends Migration
      */
     public function __construct()
     {
-        $this->table = config('Handy.address.table', 'Handy_addresses');
+        $this->table = config('handy.address.table', 'handy_addresses');
     }
 
     /**
@@ -34,7 +34,7 @@ class CreateAddressesTable extends Migration
             $table->string('postal', 15)->nullable();
             $table->text('address')->nullable();
             $table->string('city', 20)->nullable();
-            $table->string('taxcode', 10)->nullable();
+            $table->string('taxcode', 15)->nullable();
             $table->string('telephone', 15)->nullable();
             $table->string('addressable_type', 255);
             $table->enum('type', ['home', 'office'])->nullable();

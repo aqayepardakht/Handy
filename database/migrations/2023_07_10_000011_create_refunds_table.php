@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 /**
  * Class CreateWalletsTable
  */
-class CreateTransactionsTable  extends Migration
+class CreateWalletsTable extends Migration
 {
     /**
      * Table names.
@@ -21,7 +21,7 @@ class CreateTransactionsTable  extends Migration
      */
     public function __construct()
     {
-        $this->table = config('handy.transaction.table', 'handy_transactions');
+        $this->table = config('handy.refund.table', 'handy_refunds');
     }
 
     /**
@@ -34,10 +34,9 @@ class CreateTransactionsTable  extends Migration
         Schema::create($this->table, function(Blueprint $table)
         {
             $table->id();
-            $table->unsignedBigInteger('wallet_id');
-            $table->unsignedBigInteger('invoice_id');
-            $table->string('type', 50);
-            $table->float('amount');
+            $table->unsignedBigInteger('transaction_id')->index();
+            $table->string('trace_code')->nullable();
+            $table->decimal('amount');
             $table->timestamps();
             $table->softDeletes();
         });

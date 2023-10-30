@@ -27,8 +27,8 @@ class Address extends Model
     {
         parent::__construct($attributes);
 
-        $this->table    = config('Handy.address.table', 'address');
-        $this->fillable = array_keys(config('Handy.address.rules'));
+        $this->table    = config('handy.address.table', 'address');
+        $this->fillable = array_keys(config('handy.address.rules'));
     }
 
     public static function boot()
@@ -43,12 +43,12 @@ class Address extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('Handy.addresses.users.model', config('auth.providers.users.model', 'App\Models\User')));
+        return $this->belongsTo(config('handy.address.users.model', config('auth.providers.users.model', 'App\Models\User')));
     }
 
     public static function getValidationRules(): array
     {
-        $rules = config('Handy.addresses.rules', [
+        $rules = config('handy.address.rules', [
             'postal'  => 'required|ir_postal_code',
             'city'    => 'required|exists:cities,id',
             'address' => 'required|min:3|persian_alpha',

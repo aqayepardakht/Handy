@@ -24,7 +24,8 @@
     "autoload": {
         "psr-4": {
             "Aqayepardakht\\Handy\\": "src/",
-            "Aqayepardakht\\Handy\\Database\\Factories\\": "database/factories"
+            "Aqayepardakht\\Handy\\Database\\Factories\\": "database/factories",
+            "Aqayepardakht\\Handy\\Database\\Seeders\\": "database/seeders"
         }
     },
     "autoload-dev": {
@@ -34,9 +35,12 @@
     },
     "extra": {
         "laravel": {
-          "providers": [
-            "Aqayepardakht\\Handy\\AqayepardakhtServiceProvider"
-          ]
+            "providers": [
+                "Aqayepardakht\\Handy\\AqayepardakhtServiceProvider"
+            ],
+            "aliases" : {
+                "WalletService" : "Aqayepardakht\\Handy\\Wallet\\Facades\\WalletServiceFacade"
+            }
         }
     }
 }

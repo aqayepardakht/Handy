@@ -25,13 +25,13 @@ class TicketService {
     
     protected function validateStoreData(Request $request) {
 
-        $rules = config('Handy.ticket.store');
+        $rules = config('handy.ticket.rules');
         return $this->validateData($request, $rules);
     }
 
     protected function validateMessageData(Request $request) {
 
-        $rules = config('Handy.ticket.message');
+        $rules = config('handy.ticket.message.rules');
         return $this->validateData($request, $rules);
     }
 
@@ -44,9 +44,7 @@ class TicketService {
         if ($validator->fails()) throw new TicketFaildValidationException($validator);
         
         $data['ip'] = $ip;
-        
-        $this->data = $data;
-        
+        $this->data = $data;  
     }
 
     protected function prepareData(array $fields) {
@@ -56,20 +54,22 @@ class TicketService {
     
     protected function prepareTicketData() {
 
-        $configFields = config('Handy.ticket_fields');
-        $fields = array_keys($configFields);
+        $configFields = config('handy.ticket.fields');
+        $fields       = array_keys($configFields);
+
         return $this->prepareData($fields);
     }
 
     protected function prepareMessageData() {
 
-        $configFields = config('Handy.ticket_mesage_fields');
-        $fields = array_keys($configFields);
+        $configFields = config('handy.ticket.message.fields');
+        $fields       = array_keys($configFields);
+
         $messageData = $this->prepareData($fields);
 
-        $messageData['user_id'] = Auth::id();
-        $messageData['ip'] = $this->data['ip'];
-        $messageData['file'] = isset($messageData['file']) ? $this->fileUpload($messageData['file'], 'public/tickets/documents') : null;
+        $messageData['ip']      = $this->data['ip'];
+        $messageData['user_id'] = isset($messageData['user_id']) ? $messageData['user_id'] : Auth::id() ;
+        $messageData['file']    = isset($messageData['file']) ? $this->fileUpload($messageData['file'], 'public/tickets/documents') : null;
 
         return $messageData;
     }
@@ -88,8 +88,7 @@ class TicketService {
             ]);
     
             $ticketMessageData = $this->prepareMessageData();
-
-            $saveResult = $this->repository->saveTicket($ticketData)
+            $saveResult        = $this->repository->saveTicket($ticketData)
                                             ->saveMessage($ticketMessageData);
 
             DB::commit();
@@ -114,6 +113,7 @@ class TicketService {
             $messageData = $this->prepareMessageData();
             
             $status = 'answered';
+            
             $saveMessage = $response->saveMessage($messageData);
             $updateStatus = $saveMessage->updateTicketStatus($status);
              
@@ -135,11 +135,8 @@ class TicketService {
         if ($files instanceof \Illuminate\Http\UploadedFile) {
             $name = rand(0, time()) . '.' . $files->getClientOriginalExtension();
             $files->storeAs($path, $name);
-            return $uploadedFiles = $name;
+            return $name;
         }
-
-        return json_encode($uploadedFiles);
-    
     }
     
 }

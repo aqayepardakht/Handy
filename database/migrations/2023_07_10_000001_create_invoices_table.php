@@ -21,7 +21,7 @@ class CreateInvoicesTable  extends Migration
      */
     public function __construct()
     {
-        $this->table = config('Handy.payment.table', 'Handy_invoices');
+        $this->table = config('handy.invoice.table', 'handy_invoices');
     }
 
     /**

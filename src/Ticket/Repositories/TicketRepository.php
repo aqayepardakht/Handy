@@ -51,7 +51,7 @@ class TicketRepository {
 
        $user = $user ?? \Auth::user();
        $query = $user->tickets();
-       return $this->paginateTickets($query , $perPage);
+       return $query;
     }
 
     public function paginateTickets($query , $perPage = null) {

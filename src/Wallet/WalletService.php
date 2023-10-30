@@ -25,8 +25,9 @@ use Aqayepardakht\Handy\Wallet\Exceptions\{
 };
 
 use Aqayepardakht\Handy\Wallet\Requests\WalletRequest;
+use Aqayepardakht\Handy\Wallet\Contract\WalletServiceInterface;
 
-class WalletService
+class WalletService implements WalletServiceInterface
 {
     private $invoiceRepository;
     private $walletRepository;
@@ -43,12 +44,12 @@ class WalletService
     public function purchase(Invoice $invoice): string
     {
         $api = new Api([
-            'pin' => config('Handy.pay.pin', 'AQaqayepardakht'),
+            'pin' => config('handy.pay.pin', 'Aqayepardakht'),
         ]);
 
         $payableInvoice = new PayableInvoice($invoice->toArray());
 
-        $payableInvoice->setCallback(config('Handy.pay.callback_url', 'http://sandbox.test'));
+        $payableInvoice->setCallback(config('handy.pay.callback_url', 'http://sandbox.test'));
 
         $pay = $api->gateway()->invoice($payableInvoice)->create();
         $invoice->trace_code = $pay->invoice->getTraceCode();
@@ -71,7 +72,7 @@ class WalletService
         }
 
         $api = new Api([
-            'pin' => config('Handy.pay.pin'),
+            'pin' => config('handy.pay.pin'),
         ]);
 
 

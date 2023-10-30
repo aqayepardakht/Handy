@@ -16,6 +16,13 @@ class AqayepardakhtServiceProvider extends ServiceProvider
         }
     }
 
+    public function register() 
+    {
+        \App::bind('WalletService', function(){
+            return new \Aqayepardakht\Handy\Wallet\WalletService;
+        });
+    }
+
     private function handleConfig(): void
     {
         $configPath = __DIR__ . '/../config/config.php';
@@ -31,6 +38,10 @@ class AqayepardakhtServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'migrations');
+
+        $this->publishes([
+            __DIR__.'/../database/seeders' => database_path('seeders'),
+        ], 'seeders');
     }
 
     protected function getMigrationFiles($path)

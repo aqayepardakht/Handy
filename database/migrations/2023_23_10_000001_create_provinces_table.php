@@ -9,45 +9,28 @@ use Illuminate\Database\Migrations\Migration;
  */
 class CreateWalletsTable extends Migration
 {
-    /**
-     * Table names.
-     *
-     * @var string  $table  The main table name for this migration.
-     */
+   
     protected $table;
 
-    /**
-     * Create a new migration instance.
-     */
+    
     public function __construct()
     {
-        $this->table = config('handy.wallet.table', 'handy_wallets');
+        $this->table = config('handy.prvince.table', 'handy_provinces');
     }
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {
         Schema::create($this->table, function(Blueprint $table)
         {
             $table->id();
-            $table->unsignedBigInteger('holder_id')->index();
-            $table->string('holder_type');
-            $table->string('name')->nullable();
-            $table->decimal('balance', 10, 0);
+            $table->string('name', 100);
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+   
     public function down()
     {
         Schema::dropIfExists($this->table);

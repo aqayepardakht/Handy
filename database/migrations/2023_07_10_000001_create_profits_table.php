@@ -21,7 +21,7 @@ class CreateProfitsTable   extends Migration
      */
     public function __construct()
     {
-        $this->table = config('Handy.payment.table', 'Handy_profits');
+        $this->table = config('handy.profit.table', 'handy_profits');
     }
 
     /**

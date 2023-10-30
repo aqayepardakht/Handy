@@ -17,20 +17,31 @@ class Transaction extends Model
 {
     use SoftDeletes, HasFactory;
 
-    protected $fillable = ['type',
-    'amount',
-    'wallet_id'];
+    protected $fillable = [
+        'type',
+        'amount',
+        'wallet_id',
+        'invoice_id'
+    ];
 
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 
-        $this->table = config('Handy.wallet.table', 'Handy_transactions');
+        $this->table = config('handy.transaction.table', 'handy_transactions');
         // $this->fillable = array_keys(config('Handy.wallet.rules'));
     }
 
     public function profits() {
         return $this->hasMany(Profit::class, 'transaction_id');
+    }
+
+    public function invoice() {
+        return $this->belongsTo(Invoice::class);
+    }
+
+    public function wallet() {
+        return $this->belongsTo(Wallet::class , 'wallet_id');
     }
 
     /**

@@ -18,12 +18,17 @@ class Invoice extends Model
     use SoftDeletes, HasFactory;
 
     protected $fillable = [
-        "amount",
-        "card_number",
-        "invoice_id",
-        "mobile",
-        "email",
-        "description",
+        'payable_id',
+        'payable_type',
+        'trace_code',
+        'tracking_number',
+        'amount',
+        'card_numbers',
+        'product_id',
+        'mobile',
+        'email',
+        'description',
+        'status',
     ];
 
     protected $casts = [
@@ -34,13 +39,14 @@ class Invoice extends Model
     {
         parent::__construct($attributes);
 
-        $this->table = config('Handy.wallet.table', 'Handy_invoices');
+        $this->table = config('handy.invoice.table', 'handy_invoices');
         // $this->fillable = array_keys(config('Handy.wallet.rules'));
     }
 
-    /**
-     * Create a new factory instance for the model.
-    */
+    public function transaction() {
+        return $this->hasOne(Transaction::class);
+    }
+
     protected static function newFactory(): Factory
     {
         return \Aqayepardakht\Handy\Database\Factories\InvoiceFactory::new();
